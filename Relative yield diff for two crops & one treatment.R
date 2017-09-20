@@ -11,8 +11,13 @@
 
 rm(list=ls(all=TRUE))
 
+crop1 <- "Maize"
+crop2 <- "Soybean"
+File1 <- "summary_Ames_maize.csv"
+File2 <- "summary_Ames_soybean.csv"
+
 #####to export plot
-dir<-"Relative_yield_Colorado_maize&wheat.jpeg"
+dir<-"Relative_yield_Ames_maize&soybean.jpeg"
 jpeg(dir,res=300, width=5, height=6.5, unit="in")
 
 #par (mfrow=c(2,1),mar=c(0,0.5,0,0),oma=c(4,3,1,1),mgp = c(3,1,0))
@@ -22,7 +27,7 @@ par (mfrow=c(2,1),mar=c(0,0,0,0),oma=c(5,3,3,1),mgp = c(4,0.5,0))
 ######
 
 # limits on y axis
-ylim_low  <- -40
+ylim_low  <- -60
 ylim_high <- 60
 
 # location of "+1.5" and "+2.0" text labels
@@ -34,7 +39,7 @@ v1 <- 60
 ###############################################################################################
 ###############################################################################################
 # Maize
-x<-read.csv("summary_Colorado_maize.csv",header=TRUE)
+x<-read.csv(File1,header=TRUE)
 
 #generate year for each simulation based on start of simulation date
 x$year <- floor(x$SDAT / 1000)
@@ -125,7 +130,7 @@ boxplot(
 axis(2, tck=0.01,las=1,cex.axis=1)
 axis(4, tck=0.01,las=1,label=FALSE,cex.axis=1)#
 abline(v=c(6),lty=3, col="black")
-mtext("Maize", side = 2, line = 2, outer = FALSE, at = NA,
+mtext(crop1, side = 2, line = 2, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =1, col = NA, font = NA)
 ###text for every panel
 text(h1,v1, "+1.5 °C",cex=1)
@@ -136,7 +141,7 @@ text(h2,v1, "+2.0 °C",cex=1)
 ###############################################################################################
 ###############################################################################################
 # Wheat
-x<-read.csv("summary_Colorado_wheat.csv",header=TRUE)
+x<-read.csv(File2,header=TRUE)
 
 #generate year for each simulation based on start of simulation date
 x$year <- floor(x$SDAT / 1000)
@@ -214,7 +219,7 @@ axis(2, tck=0.01,las=1,cex.axis=1)
 axis(4, tck=0.01,las=1,label=FALSE,cex.axis=1)#
 abline(v=c(6),lty=3, col="black")
 
-mtext("Wheat", side = 2, line = 2, outer = FALSE, at = NA,
+mtext(crop2, side = 2, line = 2, outer = FALSE, at = NA,
 adj = NA, padj = NA, cex =1, col = NA, font = NA)
 
 # Overall title for plot
