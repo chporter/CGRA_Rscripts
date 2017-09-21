@@ -1,6 +1,6 @@
 ###############################################################################################
 #Cheryl Porter 9/20/2017
-#script to compute the relative change in harvested yield for each location in USA
+#script to compute the relative change in harvested yield for one farm
 # One "farm" or "treatment", so relative yields are computed for each year to get distribution.
 ###############################################################################################
 

@@ -3,11 +3,13 @@
 rm(list=ls(all=TRUE))
 
 #x<-read.csv("D:/2017/CGRA data/from_cheryl/COlorado/summary_Maize/Summary_Maize_CM2.csv",header=TRUE)
-x<-read.csv("summary_Colorado_wheat.csv",header=TRUE)
+x<-read.csv("summary_Camilla_peanut.csv",header=TRUE)
 
 ##export to file
-dir<-"Colorado_wheat_yield_ts.jpeg"
+dir<-"Camilla_peanut_yield_ts.jpeg"
 jpeg(dir,res=300, width=6, height=4, unit="in")
+crop_legend="peanut"
+ID_CLI="0XXX"
 
 par (mfrow=c(1,1),mar=c(0,0,0,0),oma=c(3,4,1,1),mgp = c(0,0.2, 0))
 
@@ -28,13 +30,14 @@ a
 b<-unique(x2$TNAM)
 b
 
-ID_CLI="0XXX"
 #tnam="PT normal residue" #for Colorado
 #tnam="Iowa maize - soil 1" #for Ames - Maize
-tnam=b[1]#"Clarion Loam" #for Ames - SOybean
+
+##### for Camilla, Georgia, use treatment 6 (least stressed)
+tnam <- as.character(b[6])
+####
 
 cex_axis=1
-crop_legend="wheat"
 
 #####
 ##CM1

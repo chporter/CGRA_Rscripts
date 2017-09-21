@@ -4,10 +4,11 @@
 rm(list=ls(all=TRUE))
 
 #x<-read.csv("D:/2017/CGRA data/from_cheryl/Colorado/summary_Wheat/Summary_Wheat_CM2.csv",header=TRUE)
-x<-read.csv("summary_Colorado_wheat.csv",header=TRUE)
+x<-read.csv("summary_Camilla_peanut.csv",header=TRUE)
 
-dir<-"Colorado_wheat_weather_ts.jpeg"
+dir<-"Camilla_peanut_weather_ts.jpeg"
 jpeg(dir,res=300, width=4.5, height=8, unit="in")
+crop_legend="peanut"
 
 par (mfrow=c(3,1),mar=c(4,0,0,0),oma=c(1,4,1,1),mgp = c(0,0.2, 0))
 
@@ -24,11 +25,13 @@ b<-unique(x2$TNAM)
 b
 
 ID_CLI="0XXX"
-tnam=b[1]
+
+#### For Camilla, Georgia, use treatment 6
+tnam <- as.character(b[6])
+####
 
 cex_axis=1.2
 cex_nam=1.4
-crop_legend="Wheat"
 ylim_n=5
 ylim_x=32
 
@@ -41,6 +44,7 @@ tmin
 prec<-as.numeric(x2$PRCP[x2$TNAM==tnam & x2$ID_CLIM==ID_CLI])
 prec
 
+#### Maximum temperature plot ####
 #plot(year_crop1, hwam_crop1)
 plot((c(1980:2009)), tmax , pch= 19, las=1, ylab="",xlab="",axes=F)
 box()
@@ -48,55 +52,60 @@ axis(side = 1, tck = -0.01, labels= TRUE,cex.axis=cex_axis)
 axis(side = 2, las = 1, tck = -0.01, labels=TRUE,cex.axis=cex_axis)
 axis(side = 4, las = 1, tck = 0.01, labels=FALSE,cex.axis=cex_axis)
 abline(lm(tmax ~ c(1980:2009)), lty=3,lwd=0.75)
-legend("topleft",inset = 0.01,xpd=TRUE,
-       c("Maximum temperature"),
-#       pch=c(19),
-#       lty=c(5),
-#      lwd=c(0.75),
-       col=c("black"),
-       horiz=TRUE,
-       cex=cex_nam,
-       bty="n")
+##legend("topleft",inset = 0.01,xpd=TRUE,
+#legend("topright",inset = 0.0,xpd=TRUE,
+#              c("Maximum temperature"),
+##       pch=c(19),
+##       lty=c(5),
+##      lwd=c(0.75),
+#       col=c("black"),
+#       horiz=TRUE,
+#       cex=cex_nam,
+#       bty="n")
 
-mtext("(°C)", side = 2, line = 2, outer = FALSE, at = NA,
+mtext("Max Temperature (°C)", side = 2, line = 2, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =1, col = NA, font = NA)
 
+#### Minimum temperature plot ####
 plot((c(1980:2009)), tmin , pch= 19, las=1, ylab="",xlab="",axes=F)
 box()
 axis(side = 1, tck = -0.01, labels= TRUE,cex.axis=cex_axis)
 axis(side = 2, las = 1, tck = -0.01, labels=TRUE,cex.axis=cex_axis)
 axis(side = 4, las = 1, tck = 0.01, labels=FALSE,cex.axis=cex_axis)
 abline(lm(tmin ~ c(1980:2009)), lty=3,lwd=0.75)
-legend("topleft",inset = 0.01,xpd=TRUE,
-       c("Minimum temperature"),
-       # pch=c(19),
-       # lty=c(5),
-       # lwd=c(0.75),
-       col=c("black"),
-       horiz=TRUE,
-       cex=cex_nam,
-       bty="n")
+##legend("topleft",inset = 0.01,xpd=TRUE,
+#legend("topright",inset = 0.0,xpd=TRUE,
+#       c("Minimum temperature"),
+#       # pch=c(19),
+#       # lty=c(5),
+#       # lwd=c(0.75),
+#       col=c("black"),
+#       horiz=TRUE,
+#       cex=cex_nam,
+#       bty="n")
 
-mtext("(°C)", side = 2, line = 2, outer = FALSE, at = NA,
+mtext("Min Temperature (°C)", side = 2, line = 2, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =1, col = NA, font = NA)
 
+#### Rainfall plot ####
 plot((c(1980:2009)), prec , pch= 19, las=1, ylab="",xlab="",axes=F)
 box()
 axis(side = 1, tck = -0.01, labels= TRUE,cex.axis=cex_axis)
 axis(side = 2, las = 1, tck = -0.01, labels=TRUE,cex.axis=cex_axis)
 axis(side = 4, las = 1, tck = 0.01, labels=FALSE,cex.axis=cex_axis)
 abline(lm(prec ~ c(1980:2009)), lty=3,lwd=0.75)
-legend("topleft",inset = 0.01,xpd=TRUE,
-       c("Precipitation"),
-       # pch=c(19),
-       # lty=c(5),
-       # lwd=c(0.75),
-       col=c("black"),
-       horiz=TRUE,
-       cex=cex_nam,
-       bty="n")
+##legend("topleft",inset = 0.01,xpd=TRUE,
+#legend("topright",inset = 0.00,xpd=TRUE,
+#       c("Precipitation"),
+#       # pch=c(19),
+#       # lty=c(5),
+#       # lwd=c(0.75),
+#       col=c("black"),
+#       horiz=TRUE,
+#       cex=cex_nam,
+#       bty="n")
 
-mtext("(mm)", side = 2, line = 2, outer = FALSE, at = NA,
+mtext("Rain (mm)", side = 2, line = 2, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =1, col = NA, font = NA)
 
 

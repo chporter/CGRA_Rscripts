@@ -1,11 +1,12 @@
 #comparing wether data vs harvested yield
 rm(list=ls(all=TRUE))
 
-x<-read.csv("summary_Colorado_wheat.csv",header=TRUE)
+x<-read.csv("summary_Camilla_peanut.csv",header=TRUE)
 #x<-read.csv("D:/2017/CGRA data/from_cheryl/Ames/summary_Soybean/Summary_Soybean_CM2.csv",header=TRUE)
 
-dir<-"Colorado_wheat_yield_vs_weather.jpeg"
+dir<-"Camilla_peanut_yield_vs_weather.jpeg"
 jpeg(dir,res=300, width=4, height=10, unit="in")
+crop_legend="Peanut"
 
 par (mfrow=c(3,1),mar=c(4,0,0,0),oma=c(0.5,5,1,1),mgp = c(0,0.2, 0))
 
@@ -22,11 +23,12 @@ b<-unique(x2$TNAM)
 b
 
 ID_CLI="0XXX"
-tnam=b[1]
+### for Camilla, Georgia use trt 6
+tnam <- as.character(b[6])
+###
 
 cex_axis=1.2
 cex_nam=1.4
-crop_legend="Maize"
 ylim_n=5
 ylim_x=32
 
