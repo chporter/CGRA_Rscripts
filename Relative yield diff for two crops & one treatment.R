@@ -11,13 +11,15 @@
 
 rm(list=ls(all=TRUE))
 
-crop1 <- "Maize"
-crop2 <- "Soybean"
-File1 <- "summary_Ames_maize.csv"
-File2 <- "summary_Ames_soybean.csv"
+Location <- "Camilla"
+crop1 <- "maize"
+crop2 <- "cotton"
+csv_input_file1 <- paste("summary_",Location,"_",crop1,".csv", sep="")
+csv_input_file2 <- paste("summary_",Location,"_",crop2,".csv", sep="")
+OutputFile <- paste("Rel_yield_",Location,"_",crop1,"&",crop2,".jpg", sep="")
 
 #####to export plot
-dir<-"Relative_yield_Ames_maize&soybean.jpeg"
+dir<-OutputFile
 jpeg(dir,res=300, width=5, height=6.5, unit="in")
 
 #par (mfrow=c(2,1),mar=c(0,0.5,0,0),oma=c(4,3,1,1),mgp = c(3,1,0))
@@ -38,8 +40,8 @@ v1 <- 60
 ###############################################################################################
 ###############################################################################################
 ###############################################################################################
-# Maize
-x<-read.csv(File1,header=TRUE)
+# Crop #1
+x<-read.csv(csv_input_file1,header=TRUE)
 
 #generate year for each simulation based on start of simulation date
 x$year <- floor(x$SDAT / 1000)
@@ -126,7 +128,6 @@ boxplot(
   at=c(1,2,3,4,5, 7,8,9,10,11), 
   col=c("green","red", "blue","yellow", "pink"))
 
-
 axis(2, tck=0.01,las=1,cex.axis=1)
 axis(4, tck=0.01,las=1,label=FALSE,cex.axis=1)#
 abline(v=c(6),lty=3, col="black")
@@ -140,8 +141,8 @@ text(h2,v1, "+2.0 °C",cex=1)
 ###############################################################################################
 ###############################################################################################
 ###############################################################################################
-# Wheat
-x<-read.csv(File2,header=TRUE)
+# Crop #2
+x<-read.csv(csv_input_file2,header=TRUE)
 
 #generate year for each simulation based on start of simulation date
 x$year <- floor(x$SDAT / 1000)

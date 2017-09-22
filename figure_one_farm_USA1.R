@@ -8,10 +8,16 @@
 #graph observed vs simulated
 rm(list=ls(all=TRUE))
 
+Location <- "Camilla"
+Crop <- "soybean"
+csv_input_file <- paste("summary_",Location,"_",Crop,".csv", sep="")
+trtno <- 6
+
+OutputFile1 <- paste("B&W_",Location,"_",Crop,"_Trt",trtno,"_growth.jpg", sep="")
+OutputFile2 <- paste("B&W_",Location,"_",Crop,"_Trt",trtno,"_weather.jpg", sep="")
+
 #reading table
-#x<-read.csv("D:/2017/CGRA data/from_cheryl/Colorado/summary_Maize/Summary_Maize_CM2.csv",header=TRUE)
-x<-read.csv("summary_Camilla_peanut.csv",header=TRUE)
-#x<-read.csv("D:/2017/CGRA data/from_cheryl/Ames/summary_Soybean/Summary_Soybean_CM2.csv",header=TRUE)
+x<-read.csv(csv_input_file,header=TRUE)
 
 ##weather station code
 b<-unique(x$WSTA)
@@ -19,9 +25,8 @@ b<-unique(x$WSTA)
 ##farm code
 c<-unique(x$TNAM)
 
-#### for Camilla, use trt 6
-tnam <- as.character(c[6])
-####
+#### treatment number
+tnam <- as.character(c[trtno])
 
 x2 <- subset(x, TNAM == tnam, select=c(TNAM, WSTA, PDAT, ADAT, MDAT, HWAM, CWAM, TMAXA, TMINA, PRCP))
 
@@ -48,7 +53,7 @@ cex_lab=0.95
 ###################################
 
 #####to export the figure as a file
-dir<-"Summary_Camilla_peanut_growth.jpg"
+dir<-OutputFile1
 jpeg(dir,res=300, width=7, height=11, unit="in")
 #####
 
@@ -113,7 +118,7 @@ dev.off()
 ##to export the figure
 
 #####to export the figure as a file
-dir<-"Summary_Camilla_peanut_weather.jpg"
+dir<-OutputFile2
 jpeg(dir,res=300, width=7, height=7, unit="in")
 #####
 
