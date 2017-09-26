@@ -11,12 +11,27 @@
 
 rm(list=ls(all=TRUE))
 
+#setwd("C:/CGRA_data/US_data/Colorado")
+#Location <- "Colorado"
+#crop1 <- "maize"
+#crop2 <- "wheat"
+
+#setwd("C:/CGRA_data/US_data/Iowa")
+#Location <- "Ames"
+#crop1 <- "maize"
+#crop2 <- "soybean"
+
+setwd("C:/CGRA_data/US_data/Georgia")
 Location <- "Camilla"
-crop1 <- "maize"
-crop2 <- "cotton"
+crop1 <- "peanut"
+crop2 <- "soybean"
+#crop1 <- "maize"
+#crop2 <- "cotton"
+
 csv_input_file1 <- paste("summary_",Location,"_",crop1,".csv", sep="")
 csv_input_file2 <- paste("summary_",Location,"_",crop2,".csv", sep="")
 OutputFile <- paste("Rel_yield_",Location,"_",crop1,"&",crop2,".jpg", sep="")
+OutputFile2 <- paste("MedianRelYieldChange_",Location,"_",crop1,"&",crop2,".csv", sep="")
 
 #####to export plot
 dir<-OutputFile
@@ -64,13 +79,6 @@ u_year <- as.numeric(unique(x$year))
 u_tnam <- as.character(unique(x$TNAM))
 u_wcat <- as.character(unique(x$WCat))
 
-# this:
-#hwam_raw$USGRV4XF
-# is equivalent to this:
-#n <- 2
-#u_wsta[n]
-#hwam_raw[u_wsta[n]]
-
 ###############################################################################################
 #Calculating the change in absolute and relative yield per farm and weather stations
 ###############################################################################################
@@ -111,8 +119,23 @@ uabs_year <- as.numeric(unique(df_abs$year))
 urel_wsta <- as.character(unique(df_rel$wsta))
 urel_year <- as.numeric(unique(df_rel$year))
 
+#save max and min ranges for median values
+nwsta <- length(urel_wsta)
+Medians <- data.frame(matrix(ncol = 3, nrow = nwsta+2))
+Medians <- setNames(Medians, c("WSTA", crop1, crop2))
+for (i in 1:nwsta){
+  Medians$WSTA[i] <- urel_wsta[i]
+  Medians[i,2] <- median(df_rel$rel_hwam[df_rel$wsta==urel_wsta[i]])
+}
+
+Medians[nwsta+1,1] <- "Maximum"
+Medians[nwsta+1,2] <- max(Medians[1:nwsta,2])
+
+Medians[nwsta+2,1] <- "Minimum"
+Medians[nwsta+2,2] <- min(Medians[1:nwsta,2])
+
 ###############################################################################################
-#Whisker plot for relative change per weater station in a specific location
+#Whisker plot for relative change per weather station in a specific location
 ###############################################################################################
 
 a <- df_rel$rel_hwam
@@ -131,6 +154,7 @@ boxplot(
 axis(2, tck=0.01,las=1,cex.axis=1)
 axis(4, tck=0.01,las=1,label=FALSE,cex.axis=1)#
 abline(v=c(6),lty=3, col="black")
+abline(h=c(0),lty=3, col="black")
 mtext(crop1, side = 2, line = 2, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =1, col = NA, font = NA)
 ###text for every panel
@@ -198,6 +222,18 @@ uabs_year <- as.numeric(unique(df_abs$year))
 urel_wsta <- as.character(unique(df_rel$wsta))
 urel_year <- as.numeric(unique(df_rel$year))
 
+#save max and min ranges for median values
+nwsta <- length(urel_wsta)
+for (i in 1:nwsta){
+  Medians$WSTA[i] <- urel_wsta[i]
+  Medians[i,3] <- median(df_rel$rel_hwam[df_rel$wsta==urel_wsta[i]])
+}
+
+Medians[nwsta+1,3] <- max(Medians[1:nwsta,3])
+Medians[nwsta+2,3] <- min(Medians[1:nwsta,3])
+
+write.csv(Medians, file =OutputFile2)
+
 ###############################################################################################
 #Whisker plot for relative change per weater station in a specific location
 ###############################################################################################
@@ -215,10 +251,11 @@ boxplot(
   at=c(1,2,3,4,5, 7,8,9,10,11), 
   col=c("green","red", "blue","yellow", "pink"))
 
-axis(1, at=1:11,labels=c("CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1" ), tck=0.01,las=2,cex.axis=1)
+axis(1, at=1:11,labels=c("CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M" ), tck=0.01,las=2,cex.axis=1)
 axis(2, tck=0.01,las=1,cex.axis=1)
 axis(4, tck=0.01,las=1,label=FALSE,cex.axis=1)#
 abline(v=c(6),lty=3, col="black")
+abline(h=c(0),lty=3, col="black")
 
 mtext(crop2, side = 2, line = 2, outer = FALSE, at = NA,
 adj = NA, padj = NA, cex =1, col = NA, font = NA)
