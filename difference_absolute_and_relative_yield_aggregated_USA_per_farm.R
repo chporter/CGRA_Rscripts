@@ -83,7 +83,7 @@ temp_code
 ###############################################################################################
 
 boxplot(rel_HWAM~WSTA,data=df1, ylim=c(ylim_n,ylim_x),xaxt="n",yaxt="n",las=1,at=c(1,2,3,4,5, 7,8,9,10,11),col=c("green","red", "blue","yellow", "pink"))
-axis(1, at=1:11,labels=c("CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1" ), tck=0.01,las=2,cex.axis=1)
+axis(1, at=1:11,labels=c("CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M" ), tck=0.01,las=2,cex.axis=1)
 #axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=1)
 axis(2, tck=0.01,las=1,cex.axis=1)
 abline(v=c(6),lty=3, col="black")

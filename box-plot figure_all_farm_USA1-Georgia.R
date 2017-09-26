@@ -107,7 +107,7 @@ boxplot(
   col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))
 
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)#AN00021
-#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -116,7 +116,7 @@ mtext("Harv. yield (kg/ha)", side = 2, line = 4, outer = FALSE, at = NA,
 
 boxplot(mergedAve$CWAM~mergedAve$WSTA, xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -125,7 +125,7 @@ mtext("Biomass (kg/ha)", side = 2, line = 4, outer = FALSE, at = NA,
 
 boxplot(mergedAve$nday_flo~mergedAve$WSTA, xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -134,7 +134,7 @@ mtext("Days to flowering", side = 2, line = 4, outer = FALSE, at = NA,
 
 boxplot(mergedAve$nday_mat~mergedAve$WSTA, xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 #axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -156,7 +156,7 @@ par (mfrow=c(3,1),mar=c(0,4,0,1),oma=c(6,2,2,1),mgp = c(0,0.2, 0))
 
 boxplot(x$TMAXA[x$TNAM==tnam]~x$WSTA[x$TNAM==tnam], xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))#, outline=F,las=1,xaxt="n",yaxt="n")
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -165,7 +165,7 @@ mtext("Seas. Tmax (°C)", side = 2, line = 4, outer = FALSE, at = NA,
 
 boxplot(x$TMINA[x$TNAM==tnam]~x$WSTA[x$TNAM==tnam], xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))#, outline=F,las=1,xaxt="n",yaxt="n")
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=1)
+#axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=1)
 axis(1, at=1:11, tck=0.01,labels=FALSE,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
@@ -174,7 +174,7 @@ mtext("Seas. Tmin (°C)", side = 2, line = 4, outer = FALSE, at = NA,
 
 boxplot(x$PRCP[x$TNAM==tnam]~x$WSTA[x$TNAM==tnam], xaxt="n",yaxt="n",las=1,las=1,at=c(1,2,3,4,5,6, 8,9,10,11,12),col=c("gray", "green","red", "blue","yellow", "pink", "green","red", "blue","yellow", "pink"))#, outline=F,las=1,xaxt="n",yaxt="n")
 #axis(1, at=1:11,labels=c("OXFX","V4XF","V5XF","V8XF","VOXF","VTXF","W4XF","W5XF","W8XF","WOXF","WTXF"), tck=0.01,las=2,cex.axis=1)
-axis(1, at=1:12,labels=c("Base","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1", "","CanAM4","CAM4","HadAM3P"," MIROC5","NorESM1"), tck=0.01,las=2,cex.axis=cex)
+axis(1, at=1:12,labels=c("Base","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M", "","CanAM4","CAM4-2deg","HadAM3P"," MIROC5","NorESM1-M"), tck=0.01,las=2,cex.axis=cex)
 axis(2, tck=0.01,las=1,cex.axis=cex)
 abline(v=c(7),lty=3, col="black")
 mtext("Seas. prec (mm)", side = 2, line = 4, outer = FALSE, at = NA,
