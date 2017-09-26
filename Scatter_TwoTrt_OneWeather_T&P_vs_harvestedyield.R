@@ -1,8 +1,9 @@
 #comparing weather data vs harvested yield
 rm(list=ls(all=TRUE))
 
+setwd("C:/CGRA_data/US_data/Georgia/GenericCotton")
 Location <- "Camilla"
-Crop <- "peanut"
+Crop <- "cotton"
 trtno1 <- 5
 trtno2 <- 6
 ID_CLI="0XXX"
@@ -114,18 +115,9 @@ axis(side = 4, las = 1, tck = 0.01, labels=FALSE,cex.axis=cex_axis)
 
 mtext("Precipitation (mm)", side = 1, line = 1.5, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =cex_label, col = NA, font = NA)
+      
 mtext("Harvested yield (kg/ha)", side = 2, line = 2.5, outer = FALSE, at = NA,
       adj = NA, padj = NA, cex =cex_label, col = NA, font = NA)
-
-
-#mtext("Harvested yield (kg/ha)", side = 2, line = 3.5, outer = TRUE, at = 0.55, col="black",
-#      adj = NA, padj = NA, cex =cex_label, font = NA)
-
-legend("bottomright", legend=c("irrigated","rainfed"), pch=c(19,19), col = c("red","blue"), horiz=TRUE)
-#legend("bottomright", inset=c(0.0,-0.4), legend=c("irrigated","rainfed"), pch=c(19,19), col = c("red","blue"), horiz=TRUE)
-#legend("left", inset=c(0.0,-0.4), legend=c("irrigated","rainfed"), pch=c(19,19), col = c("red","blue") )#, horiz=TRUE)
-
-
 
 ##### 
 dev.off()

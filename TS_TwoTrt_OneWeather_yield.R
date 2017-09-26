@@ -2,8 +2,9 @@
 #graph observed vs simulated
 rm(list=ls(all=TRUE))
 
+setwd("C:/CGRA_data/US_data/Georgia/GenericCotton")
 Location <- "Camilla"
-Crop <- "peanut"
+Crop <- "cotton"
 trtno1 <- 5
 trtno2 <- 6
 ID_CLI="0XXX"
@@ -43,7 +44,7 @@ cex_axis=1
 # plot hwam1 vs year1 
 plot(year1, hwam1 , 
      pch= 19, col="blue", las=1, ylab="",xlab="",axes=F,
-     ylim = c(min(hwam1-250,hwam2-250),max(hwam1+250,hwam2+250)),
+     ylim = c(min(hwam1-250,hwam2-250),max(hwam1+500,hwam2+500)),
      xlim = c(min(year1,year2),max(year1,year2)))
 
 # add points for treatment 2
